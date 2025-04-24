@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
 
-## Project info
+# Modern React Template
 
-**URL**: https://lovable.dev/projects/3d58a548-0c42-4f92-b0b6-ffe4efec049a
+A modern React template built with TypeScript, Vite, and Tailwind CSS.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- ⚡️ Vite for super fast development
+- 🎨 Tailwind CSS for styling
+- 📦 shadcn/ui components
+- 🔍 ESLint configured
+- 📱 Responsive layout
+- 🛡️ TypeScript support
+- 🎯 Error boundaries for better error handling
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3d58a548-0c42-4f92-b0b6-ffe4efec049a) and start prompting.
+1. Clone this repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Build for production:
+   ```bash
+   npm run build
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+## Project Structure
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+  ├── components/     # Reusable components
+  │   ├── layout/    # Layout components
+  │   └── ui/        # UI components
+  ├── pages/         # Page components
+  ├── lib/           # Utilities and helpers
+  └── styles/        # Global styles
 ```
 
-**Edit a file directly in GitHub**
+## Extending the Project
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Here are some ways to extend this template:
 
-**Use GitHub Codespaces**
+1. **Add Authentication**
+   - Implement user authentication
+   - Add protected routes
+   - Create login/signup forms
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. **State Management**
+   - Add Tanstack Query for data fetching
+   - Implement context for global state
+   - Add local storage persistence
 
-## What technologies are used for this project?
+3. **Additional Features**
+   - Add dark mode support
+   - Implement i18n for multiple languages
+   - Add form validation
+   - Create a dashboard layout
 
-This project is built with:
+4. **Testing**
+   - Add Jest for unit testing
+   - Implement E2E testing with Cypress
+   - Add testing utilities
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+5. **Performance**
+   - Implement code splitting
+   - Add PWA support
+   - Optimize images and assets
 
-## How can I deploy this project?
+## Available Scripts
 
-Simply open [Lovable](https://lovable.dev/projects/3d58a548-0c42-4f92-b0b6-ffe4efec049a) and click on Share -> Publish.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
 
-## Can I connect a custom domain to my Lovable project?
+## Learn More
 
-Yes, you can!
+To learn more about the technologies used in this template:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- [React Documentation](https://reactjs.org/)
+- [Vite Documentation](https://vitejs.dev/)
+- [TypeScript Documentation](https://www.typescriptlang.org/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/)
+- [shadcn/ui Documentation](https://ui.shadcn.com/)
