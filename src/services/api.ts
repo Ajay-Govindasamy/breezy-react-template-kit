@@ -59,3 +59,39 @@ export class ApiService<T> {
     }
   }
 }
+
+// Add TodoAPI implementation using the generic ApiService
+import { Todo, CreateTodoInput, UpdateTodoInput } from '@/types/todo';
+
+const API_URL = 'https://jsonplaceholder.typicode.com';
+
+class TodoApiService {
+  private api: ApiService<Todo>;
+
+  constructor() {
+    this.api = new ApiService<Todo>(API_URL);
+  }
+
+  async getAll(): Promise<Todo[]> {
+    return this.api.getAll('/todos');
+  }
+
+  async getById(id: number): Promise<Todo> {
+    return this.api.get(`/todos/${id}`);
+  }
+
+  async create(data: CreateTodoInput): Promise<Todo> {
+    return this.api.post('/todos', data);
+  }
+
+  async update(id: number, data: UpdateTodoInput): Promise<Todo> {
+    return this.api.put(`/todos/${id}`, data);
+  }
+
+  async delete(id: number): Promise<void> {
+    return this.api.delete(`/todos/${id}`);
+  }
+}
+
+// Export the TodoAPI instance
+export const TodoAPI = new TodoApiService();

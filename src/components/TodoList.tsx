@@ -4,6 +4,7 @@ import { useTodos } from '@/hooks/useTodos';
 import { useTodoStore } from '@/store/todo';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Todo } from '@/types/todo';
 
 export const TodoList = () => {
   const [newTodoTitle, setNewTodoTitle] = useState('');
@@ -16,9 +17,11 @@ export const TodoList = () => {
     setNewTodoTitle('');
   };
 
-  const filteredTodos = todos.filter(todo => 
-    todo.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredTodos = Array.isArray(todos) 
+    ? todos.filter((todo: Todo) => 
+        todo.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -44,7 +47,7 @@ export const TodoList = () => {
       </div>
 
       <ul className="space-y-2">
-        {filteredTodos.map((todo) => (
+        {filteredTodos.map((todo: Todo) => (
           <li key={todo.id} className="flex items-center gap-2 p-2 border rounded">
             <input
               type="checkbox"
