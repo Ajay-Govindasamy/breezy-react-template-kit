@@ -1,4 +1,3 @@
-
 # Modern React Template
 
 A modern React template built with TypeScript, Vite, and Tailwind CSS.
@@ -12,6 +11,7 @@ A modern React template built with TypeScript, Vite, and Tailwind CSS.
 - 📱 Responsive layout
 - 🛡️ TypeScript support
 - 🎯 Error boundaries for better error handling
+- 📚 Storybook for component documentation
 
 ## Getting Started
 
@@ -28,6 +28,42 @@ A modern React template built with TypeScript, Vite, and Tailwind CSS.
    ```bash
    npm run build
    ```
+
+## Storybook
+
+This project includes Storybook for component development and documentation. To use Storybook:
+
+1. Start Storybook development server:
+   ```bash
+   npm run storybook
+   ```
+2. Open [http://localhost:6006](http://localhost:6006) in your browser
+
+### Writing Stories
+
+Stories are located in the `src/stories` directory. Here's an example of how to create a story:
+
+```typescript
+// Button.stories.tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+const meta = {
+  title: 'Components/Button',
+  component: Button,
+  tags: ['autodocs'],
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
+  args: {
+    variant: 'default',
+    children: 'Button',
+  },
+};
+```
 
 ## Project Structure
 
