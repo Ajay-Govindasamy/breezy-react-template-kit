@@ -65,6 +65,29 @@ export const Primary: Story = {
 };
 ```
 
+## API Integration
+
+This project includes a complete API integration setup with:
+- REST API calls (GET, POST, PUT, DELETE)
+- React Query for data fetching and caching
+- Zustand for global state management
+- Custom hooks for API operations
+
+### Example Usage
+
+```typescript
+// Using the todo hooks
+const { todos, createTodo, updateTodo, deleteTodo } = useTodos();
+
+// Using the global store
+const { searchQuery, setSearchQuery } = useTodoStore();
+
+// Making API calls
+createTodo({ title: 'New Todo' });
+updateTodo({ id: 1, data: { completed: true } });
+deleteTodo(1);
+```
+
 ## Project Structure
 
 ```
