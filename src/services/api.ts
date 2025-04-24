@@ -1,45 +1,61 @@
 
-import { CreateTodoInput, Todo, UpdateTodoInput } from "@/types/todo";
+export class ApiService<T> {
+  private baseUrl: string;
 
-const API_URL = "https://jsonplaceholder.typicode.com";
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
 
-export const TodoAPI = {
-  getAll: async (): Promise<Todo[]> => {
-    const response = await fetch(`${API_URL}/todos`);
-    if (!response.ok) throw new Error('Failed to fetch todos');
+  async get(endpoint: string): Promise<T> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     return response.json();
-  },
+  }
 
-  getById: async (id: number): Promise<Todo> => {
-    const response = await fetch(`${API_URL}/todos/${id}`);
-    if (!response.ok) throw new Error('Failed to fetch todo');
+  async getAll(endpoint: string): Promise<T[]> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     return response.json();
-  },
+  }
 
-  create: async (todo: CreateTodoInput): Promise<Todo> => {
-    const response = await fetch(`${API_URL}/todos`, {
+  async post(endpoint: string, data: Partial<T>): Promise<T> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(todo),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     });
-    if (!response.ok) throw new Error('Failed to create todo');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     return response.json();
-  },
+  }
 
-  update: async (id: number, todo: UpdateTodoInput): Promise<Todo> => {
-    const response = await fetch(`${API_URL}/todos/${id}`, {
+  async put(endpoint: string, data: Partial<T>): Promise<T> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(todo),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     });
-    if (!response.ok) throw new Error('Failed to update todo');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     return response.json();
-  },
+  }
 
-  delete: async (id: number): Promise<void> => {
-    const response = await fetch(`${API_URL}/todos/${id}`, {
+  async delete(endpoint: string): Promise<void> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`, {
       method: 'DELETE',
     });
-    if (!response.ok) throw new Error('Failed to delete todo');
-  },
-};
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  }
+}
